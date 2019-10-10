@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react';
 import {incrementCounter, decrementCounter  } from './textActions'
 import Script   from 'react-load-script'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-import { Button ,Icon } from 'semantic-ui-react'
+import { Button  } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { openModal } from '../modals/modalActions'
 
 const mapState = (state) => ({
     data: state.test.data
@@ -12,10 +12,10 @@ const mapState = (state) => ({
 
 const actions = {
  incrementCounter,
- decrementCounter
+ decrementCounter,
+ openModal
 }
 
-const Marker = () => <Icon name='marker' size='big' color='red'/>
 class TestComponent extends Component {
     static defaultProps = {
         center: {
@@ -46,7 +46,7 @@ class TestComponent extends Component {
             value: this.state.address,
             onChange: this.onChange,
           }
-        const {incrementCounter,decrementCounter,data} = this.props;
+        const {incrementCounter,decrementCounter,data, openModal } = this.props;
         return (
             <div>
                 {/* <Script
@@ -57,6 +57,7 @@ class TestComponent extends Component {
                 <h3> The answer is : {data} </h3>
                 <Button onClick={incrementCounter} color ='green' content='Increment'/>
                 <Button onClick={decrementCounter} color ='red' content='Decrement'/>
+                <Button onClick={()=> openModal('TestModal', {data:43})} color ='teal' content='Open Modal'/>
                 <br/>
                 <br/>
                         <form onSubmit={this.handleFormSubmit}>
@@ -64,20 +65,6 @@ class TestComponent extends Component {
                             <PlacesAutocomplete inputProps={inputProps} />}
                             <button type="submit">Submit</button>
                     </form>
-
-                    <div style={{ height: '100vh', width: '100%' }}>
-                        <GoogleMapReact
-                        bootstrapURLKeys={{ key: 'AIzaSyDO7KlV_GsEaJgH3lM10c2woVkqAxvWd-w' }}
-                        defaultCenter={this.props.center}
-                        defaultZoom={this.props.zoom}
-                        >
-                        <Marker
-                            lat={59.955413}
-                            lng={30.337844}
-                            text="My Marker"
-                        />
-                        </GoogleMapReact>
-                    </div>
             </div>
         )
     }

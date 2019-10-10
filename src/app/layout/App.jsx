@@ -11,6 +11,7 @@ import PeopleDashboard from '../../feature/user/PeopleDashboard/PeopleDashboard'
 import EventDetailedPage from '../../feature/event/EventDetailed/EventDetailedPage'
 import HomePage from '../../feature/Home/HomePage.jsx'
 import TestComponent from '../../feature/testarea/TestComponent';
+import ModalManager from '../../feature/modals/ModalManager'
 
 
 
@@ -18,6 +19,7 @@ class App extends Component {
   render () {
     return (
       <div>
+        <ModalManager/>
         <Switch> 
         <Route  exact path="/" component={HomePage} />
         </Switch>
