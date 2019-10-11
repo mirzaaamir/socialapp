@@ -8,9 +8,10 @@ import App from './app/layout/App.jsx';
 import * as serviceWorker from './serviceWorker';
 import  { configureStore } from './app/store/configureStore';
 import ScrollToTop  from './app/common/util/ScrollToTop';
+import { loadEvents } from './feature/event/eventActions';
 
 const store = configureStore();
-
+store.dispatch(loadEvents())
 ReactDOM.render(
     <Provider store={store}>
     <BrowserRouter> 
