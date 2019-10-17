@@ -14,22 +14,25 @@ import ScrollToTop  from './app/common/util/ScrollToTop';
 
 const store = configureStore();
 
-ReactDOM.render(
-    <Provider store={store}>
-    <BrowserRouter> 
-    <ScrollToTop>
-        <ReduxToastr
-        position='bottom-right'
-        transitionIn='fadeIn'
-        taransitionOut='fadeOut'
-        />
-    <App />
-    </ScrollToTop>
-   
-    </BrowserRouter>
-    </Provider>
 
-, document.getElementById('root'));
+store.firebaseAuthIsReady.then(()=>{
+    ReactDOM.render(
+        <Provider store={store}>
+        <BrowserRouter> 
+        <ScrollToTop>
+            <ReduxToastr
+            position='bottom-right'
+            transitionIn='fadeIn'
+            taransitionOut='fadeOut'
+            />
+        <App />
+        </ScrollToTop>
+       
+        </BrowserRouter>
+        </Provider>
+    
+    , document.getElementById('root'));
+})
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
