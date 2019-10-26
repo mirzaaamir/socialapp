@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import format  from 'date-fns/format'
 import { Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import EventDetailedMap from './EventDetailedMap'
+import format from 'date-fns/format'
 
 class EventDetailedInfo extends Component {
   state = {
     showMap: false
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     this.setState({
       showMap: false
     })
@@ -21,6 +22,10 @@ class EventDetailedInfo extends Component {
 
   render() {
     const { event } = this.props;
+    let eventDate;
+    if (event.date) {
+      eventDate = event.date
+    }
     return (
       <Segment.Group>
         <Segment attached="top">
@@ -39,8 +44,7 @@ class EventDetailedInfo extends Component {
               <Icon name="calendar" size="large" color="teal" />
             </Grid.Column>
             <Grid.Column width={15}>
-              <span>{format(event.date,'dddd Do MMM')} at 
-              {format(event.date,'h:mm A')}</span>
+              <span>{format(eventDate, 'dddd Do MMM')} at {format(eventDate, 'h:mm A')}</span>
             </Grid.Column>
           </Grid>
         </Segment>

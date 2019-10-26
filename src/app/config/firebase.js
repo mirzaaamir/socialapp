@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
+
 const firebaseConfig = {
     apiKey: "AIzaSyC0bW80EjWXhVEkoa3GBHWehOsH8tg9bCM",
     authDomain: "socialapp-255401.firebaseapp.com",
@@ -16,6 +17,8 @@ const firebaseConfig = {
 //     timestampsInSnapshots: true
 // } 
 // firestore.settings(settings);
+
+
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 

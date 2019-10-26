@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase'
-import { connect } from 'react-redux'
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import SignedOutMenu from '../Menus/SignedOutMenu';
 import SignedInMenu from '../Menus/SignedInMenu';
 import { openModal } from '../../modals/modalActions'
 
-
-
-
-const actions ={
+const actions = {
   openModal
-  
 }
 
 const mapState = (state) => ({
   auth: state.firebase.auth,
   profile: state.firebase.profile
 })
+
 class NavBar extends Component {
-  
+
   handleSignIn = () => {
     this.props.openModal('LoginModal')
   };
-  handleRegister =() => {
-   this.props.openModal('RegisterModal')
-  };
+
+  handleRegister = () => {
+    this.props.openModal('RegisterModal')
+  }
 
   handleSignOut = () => {
     this.props.firebase.logout();
@@ -34,8 +32,8 @@ class NavBar extends Component {
   };
 
   render() {
-    const { auth, profile } = this.props;
-    const authenticated  = auth.isLoaded && !auth.isEmpty;
+    const { auth, profile} = this.props;
+    const authenticated = auth.isLoaded && !auth.isEmpty
     return (
       <Menu inverted fixed="top">
         <Container>
@@ -60,13 +58,9 @@ class NavBar extends Component {
             />
           </Menu.Item>}
           {authenticated ? (
-            <SignedInMenu
-            profile={profile}
-            auth = {auth}
-             signOut={this.handleSignOut}
-               />
+            <SignedInMenu auth={auth} profile={profile} signOut={this.handleSignOut} />
           ) : (
-            <SignedOutMenu signIn={this.handleSignIn}  register={this.handleRegister}/>
+            <SignedOutMenu register={this.handleRegister} signIn={this.handleSignIn} />
           )}
         </Container>
       </Menu>
@@ -74,4 +68,4 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(withFirebase(connect(mapState, actions) (NavBar)));
+export default withRouter(withFirebase(connect(mapState, actions)(NavBar)));
