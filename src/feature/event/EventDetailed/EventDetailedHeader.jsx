@@ -29,6 +29,7 @@ const EventDetailedHeader = ({ event, isHost, isGoing, goingToEvent, cancelGoing
           fluid
           style={eventImageStyle}
         />
+       
 
         <Segment basic style={eventImageTextStyle}>
           <Item.Group>

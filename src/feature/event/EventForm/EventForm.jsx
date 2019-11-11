@@ -116,11 +116,14 @@ class EventForm extends Component {
   };
 
   render() {
+    console.log(this.state)
+    console.log(this.props)
     const { invalid, submitting, pristine } = this.props;
     return (
       <Grid>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7KlV_GsEaJgH3lM10c2woVkqAxvWd-w"
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgflaOdN65olCyrCgwyOzRS_kxfd4JZvI"
+
           onLoad={this.handleScriptLoaded}
         />
         <Grid.Column width={10}>

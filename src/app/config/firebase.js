@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
 
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyC0bW80EjWXhVEkoa3GBHWehOsH8tg9bCM",
     authDomain: "socialapp-255401.firebaseapp.com",
@@ -16,8 +18,11 @@ const firebaseConfig = {
 // const settings = {
 //     timestampsInSnapshots: true
 // } 
-// firestore.settings(settings);
+// firestore.settings(settings);  
 
+
+// index.js:1375 You have included the Google Maps JavaScript API multiple times on this page. This may cause unexpected errors. ab y mslah hai
+// or kahan kahan apply ki hai api
 
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
