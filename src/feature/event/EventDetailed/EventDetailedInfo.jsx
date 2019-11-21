@@ -62,7 +62,8 @@ class EventDetailedInfo extends Component {
           </Grid>
         </Segment>
         {this.state.showMap &&
-        <EventDetailedMap lat={event.venueLatLng.lat} lng={event.venueLatLng.lng}/>}
+        <EventDetailedMap />}
+        {/* lat={event.venueLatLng.lat} lng={event.venueLatLng.lng} */}
       </Segment.Group>
     );
   }
